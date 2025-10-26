@@ -96,6 +96,36 @@
     color: #fff;
     box-shadow: 0 0 26px #ff00cc88;
   }
+  #backHome {
+    margin-top: 1.3rem;
+    margin-left: 1rem;
+    background: linear-gradient(90deg,#23224d,#00ff99,#23224d);
+    color: #fff;
+    padding: 0.7rem 2rem;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.13rem;
+    box-shadow: 0 0 15px #00ff9955;
+    letter-spacing: 1px;
+    transition: transform 0.23s, background 0.23s, box-shadow 0.23s;
+    display: inline-block;
+    opacity: 1;
+  }
+  #backHome.hide {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    margin: 0;
+    padding: 0;
+  }
+  #backHome:hover {
+    transform: scale(1.09);
+    background: linear-gradient(90deg,#00ff99,#23224d,#00ff99);
+    color: #23224d;
+    box-shadow: 0 0 26px #00ff9988;
+  }
   #game, #progress-bar, #message, #reset {
     transition: opacity 0.4s;
   }
@@ -230,6 +260,7 @@
     #game { gap: 0.6rem;}
     .card { width: 120px; height: 80px; font-size: 0.85rem; padding: 0.4rem;}
     #progress-bar { width: 95%; max-width: 95vw;}
+    #backHome { margin-top: 0.8rem; padding: 0.5rem 1rem; font-size: 1rem;}
   }
 </style>
 </head>
@@ -241,6 +272,7 @@
     <ul class="fact-list" id="factList"></ul>
     <button id="startBtn" onclick="showGame()">Start Game</button>
   </div>
+  <button id="backHome" class="hide" onclick="backToHome()">🏠 Back to Home</button>
   <div id="progress-bar" class="hide"><div id="progress"></div></div>
   <div id="game" class="hide"></div>
   <div id="message" class="hide"></div>
@@ -259,6 +291,13 @@ let current = 0;
 let locked = false;
 
 function showInfo() {
+  document.getElementById("info").classList.remove("hide");
+  document.getElementById("progress-bar").classList.add("hide");
+  document.getElementById("game").classList.add("hide");
+  document.getElementById("message").classList.add("hide");
+  document.getElementById("reset").classList.add("hide");
+  document.getElementById("backHome").classList.add("hide");
+
   const factList = document.getElementById("factList");
   factList.innerHTML = stages.map(s => `
     <li class="fact-item">
@@ -274,6 +313,7 @@ function showGame() {
     document.getElementById('game').classList.remove("hide");
     document.getElementById('message').classList.remove("hide");
     document.getElementById('reset').classList.remove("hide");
+    document.getElementById('backHome').classList.remove("hide");
     startGame();
   }, 650);
 }
@@ -329,6 +369,10 @@ function handleClick(index, div) {
       locked = false;
     }, 650);
   }
+}
+
+function backToHome() {
+  showInfo();
 }
 
 showInfo();
