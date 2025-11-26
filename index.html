@@ -5,36 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OS History Quest</title>
 <style>
-  body {
+  @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700');
+  html, body {
+    background: radial-gradient(circle at 60% 35%, #e0f2ff 0%, #ffffff 100%);
+    color: #1a2540;
     font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at 60% 35%, #00faff22 0%, #23224d 100%), #111;
-    color: white;
     text-align: center;
     min-height: 100vh;
     margin: 0;
     overflow-x: hidden;
   }
   h1 {
-    color: #00ffff;
-    text-shadow: 0 0 12px #00ffff, 0 0 32px #23224d;
+    color: #2266cc;
+    text-shadow: 0 0 18px #cce4ff, 0 0 32px #a2c0e9;
     font-size: 2.2rem;
     margin-top: 2rem;
-    letter-spacing: 2px;
     font-weight: 700;
+    letter-spacing: 2px;
   }
   .subtitle {
-    font-size: 1.1rem;
-    color: #ff00cc;
+    font-size: 1.12rem;
+    color: #2266cc;
     margin-bottom: 2rem;
-    text-shadow: 0 0 8px #ff00cc33;
+    text-shadow: 0 0 8px #bbd7fa;
   }
   #info {
-    max-width: 700px;
+    max-width: 740px;
     margin: 1.5rem auto 2rem auto;
-    padding: 1.5rem 1.5rem 1rem 1.5rem;
-    background: linear-gradient(120deg, #23224d 80%, #00faff22 100%);
-    border-radius: 20px;
-    box-shadow: 0 2px 24px #00ffff33;
+    padding: 1.7rem 1.5rem 1rem 1.5rem;
+    background: linear-gradient(120deg, #eaf6ff 80%, #d7eaff 100%);
+    border-radius: 24px;
+    box-shadow: 0 6px 26px #d6e8fa;
     transition: opacity 0.7s;
   }
   #info.hide {
@@ -45,12 +46,11 @@
     padding: 0;
   }
   .info-title {
-    color: #00ff99;
+    color: #1263c3;
     font-size: 1.3rem;
     margin-bottom: 1.2rem;
-    letter-spacing: 1px;
     font-weight: 600;
-    text-shadow: 0 2px 10px #00ff9944;
+    text-shadow: 0 2px 14px #b8d8fe;
   }
   .fact-list {
     list-style: none;
@@ -58,56 +58,70 @@
     margin: 0;
   }
   .fact-item {
-    background: linear-gradient(90deg, #23224d 70%, #00ffff22 100%);
-    border-left: 5px solid #00ffff;
-    border-radius: 12px;
+    background: linear-gradient(90deg, #f4faff 70%, #d7eaff 100%);
+    border-left: 6px solid #2266cc;
+    border-radius: 14px;
     margin-bottom: 1.1rem;
-    padding: 1rem 1.2rem;
-    color: #fff;
+    padding: 1.2rem 1.1rem 1.2rem 1.2rem;
+    color: #19305a;
     text-align: left;
-    box-shadow: 0 0 16px #00ffff22;
-    font-size: 1.07rem;
+    box-shadow: 0 0 21px #eaf6ff;
+    font-size: 1.09rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
     transition: background 0.3s;
   }
-  .fact-item:last-child { margin-bottom: 0; }
   .fact-item strong {
-    color: #ff00cc;
-    font-size: 1.13rem;
-    letter-spacing: 1px;
+    color: #2365c8;
+    font-size: 1.17rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.10rem;
+  }
+  .fact-svg {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    margin-right: 0.4rem;
+    display: block;
+    filter: drop-shadow(0 0 10px #2266cc44);
+    background: transparent;
+    border-radius: 8px;
   }
   #startBtn {
     margin-top: 1.3rem;
-    background: linear-gradient(90deg,#00ffff,#ff00cc,#00ffff);
-    color: #23224d;
-    padding: 0.7rem 2rem;
+    background: linear-gradient(90deg,#2266cc,#66aaff 90%,#2266cc);
+    color: #fff;
+    padding: 0.76rem 2.1rem;
     border: none;
-    border-radius: 14px;
+    border-radius: 15px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.13rem;
-    box-shadow: 0 0 15px #00ffff66;
+    font-size: 1.15rem;
+    box-shadow: 0 0 15px #bbd7fa;
     letter-spacing: 1px;
     transition: transform 0.23s, background 0.23s, box-shadow 0.23s;
     display: inline-block;
   }
   #startBtn:hover {
-    transform: scale(1.09);
-    background: linear-gradient(90deg,#ff00cc,#00ffff,#ff00cc);
+    transform: scale(1.11);
+    background: linear-gradient(90deg,#66aaff 10%,#2266cc 90%);
     color: #fff;
-    box-shadow: 0 0 26px #ff00cc88;
+    box-shadow: 0 0 29px #2266cc44;
   }
   #backHome {
     margin-top: 1.3rem;
     margin-left: 1rem;
-    background: linear-gradient(90deg,#23224d,#00ff99,#23224d);
-    color: #fff;
+    background: linear-gradient(90deg,#cce4ff,#2266cc,#cce4ff 90%);
+    color: #19305a;
     padding: 0.7rem 2rem;
     border: none;
-    border-radius: 14px;
+    border-radius: 15px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.13rem;
-    box-shadow: 0 0 15px #00ff9955;
+    font-size: 1.15rem;
+    box-shadow: 0 0 17px #b8d8fe;
     letter-spacing: 1px;
     transition: transform 0.23s, background 0.23s, box-shadow 0.23s;
     display: inline-block;
@@ -122,12 +136,12 @@
   }
   #backHome:hover {
     transform: scale(1.09);
-    background: linear-gradient(90deg,#00ff99,#23224d,#00ff99);
-    color: #23224d;
-    box-shadow: 0 0 26px #00ff9988;
+    background: linear-gradient(90deg,#2266cc,#cce4ff 80%);
+    color: #fff;
+    box-shadow: 0 0 26px #2266cc44;
   }
   #game, #progress-bar, #message, #reset {
-    transition: opacity 0.4s;
+    transition: opacity 0.35s;
   }
   #game.hide, #progress-bar.hide, #message.hide, #reset.hide {
     opacity: 0;
@@ -137,21 +151,21 @@
     padding: 0;
   }
   #progress-bar {
-    width: 70%;
-    max-width: 420px;
+    width: 72%;
+    max-width: 430px;
     margin: 1.8rem auto 1rem auto;
-    height: 22px;
+    height: 23px;
     border-radius: 12px;
-    background: linear-gradient(90deg, #23224d 70%, #00ffff44 100%);
-    box-shadow: 0 0 12px #00ffff55;
+    background: linear-gradient(90deg, #e0f2ff 80%, #cce4ff 100%);
+    box-shadow: 0 0 13px #b8d8fe;
     position: relative;
     overflow: hidden;
   }
   #progress {
     height: 100%;
     border-radius: 12px;
-    background: linear-gradient(90deg, #00ff99 0%, #00ffff 100%);
-    box-shadow: 0 0 20px #00ff99bb;
+    background: linear-gradient(90deg, #2266cc 0%, #66aaff 100%);
+    box-shadow: 0 0 21px #87a8debb;
     transition: width 0.4s cubic-bezier(.73,.21,.47,1.42);
     width: 0%;
   }
@@ -161,22 +175,22 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
-    min-height: 240px;
+    gap: 1.6rem;
+    min-height: 245px;
   }
   .card {
     display: inline-block;
-    background: linear-gradient(120deg, #23224d 70%, #00ffff33 100%);
-    border: 2px solid #00ffff;
-    border-radius: 18px;
-    padding: 1.2rem 1.1rem;
+    background: linear-gradient(120deg, #f4faff 85%, #e0f2ff 100%);
+    border: 2px solid #2266cc;
+    border-radius: 19px;
+    padding: 1.3rem 1.1rem;
     margin: 0.3rem;
-    width: 220px;
-    height: 130px;
+    width: 233px;
+    height: 140px;
     cursor: pointer;
-    font-size: 1rem;
-    color: #fff;
-    box-shadow: 0 0 24px #00ffff44;
+    font-size: 1.04rem;
+    color: #19305a;
+    box-shadow: 0 0 24px #cce4ff;
     transition:
       transform 0.23s cubic-bezier(.73,.21,.47,1.42),
       background 0.23s,
@@ -186,38 +200,56 @@
     position: relative;
     z-index: 2;
     opacity: 1;
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+  }
+  .card > .fact-svg {
+    margin-right: 0;
+    width: 42px;
+    height: 42px;
+    filter: drop-shadow(0 0 10px #2266cc33);
+  }
+  .card-text {
+    flex: 1;
+    text-align: left;
+  }
+  .card strong {
+    color: #2266cc;
+    font-size: 1.13rem;
+    letter-spacing: 1px;
   }
   .card:hover:not(.disabled):not(.correct):not(.wrong) {
-    transform: scale(1.1) translateY(-8px);
-    background: linear-gradient(120deg, #00ffff88 70%, #ff00cc22 100%);
-    border-color: #ff00cc;
-    box-shadow: 0 0 32px #ff00cc88, 0 0 12px #00ffff66;
+    transform: scale(1.08) translateY(-9px);
+    background: linear-gradient(120deg, #e0f2ff 85%, #2266cc22 100%);
+    border-color: #1263c3;
+    box-shadow: 0 0 30px #2266cc44, 0 0 13px #bbd7fa;
   }
   .card.correct {
-    background: linear-gradient(120deg, #00ff99 60%, #23224d 100%);
-    border-color: #00ff99;
-    box-shadow: 0 0 44px #00ff99bb;
+    background: linear-gradient(120deg, #66aaff 67%, #e0f2ff 100%);
+    border-color: #66aaff;
+    box-shadow: 0 0 46px #66aaffaa;
     animation: pulseOut 0.9s cubic-bezier(.73,.21,.47,1.42);
-    opacity: 0.5;
+    opacity: 0.48;
     pointer-events: none;
   }
   @keyframes pulseOut {
-    0% { transform: scale(1.2); opacity: 1;}
-    80% { transform: scale(1); opacity: 0.5;}
-    100% { opacity: 0.5;}
+    0% { transform: scale(1.17); opacity: 1;}
+    80% { transform: scale(1); opacity: 0.48;}
+    100% { opacity: 0.48;}
   }
   .card.wrong {
-    background: linear-gradient(120deg, #ff0044 60%, #23224d 100%);
-    border-color: #ff0044;
-    box-shadow: 0 0 32px #ff0044bb;
-    animation: shakeWrong 0.4s cubic-bezier(.73,.21,.47,1.42);
+    background: linear-gradient(120deg, #a4b8cf 67%, #e0f2ff 100%);
+    border-color: #a4b8cf;
+    box-shadow: 0 0 39px #a4b8cfbb;
+    animation: shakeWrong 0.45s cubic-bezier(.73,.21,.47,1.42);
   }
   @keyframes shakeWrong {
     0% { transform: scale(1.1) translateX(0);}
-    20% { transform: scale(1.1) translateX(-16px);}
-    40% { transform: scale(1.1) translateX(16px);}
-    60% { transform: scale(1.1) translateX(-8px);}
-    80% { transform: scale(1.1) translateX(8px);}
+    20% { transform: scale(1.13) translateX(-18px);}
+    40% { transform: scale(1.14) translateX(15px);}
+    60% { transform: scale(1.14) translateX(-9px);}
+    80% { transform: scale(1.13) translateX(9px);}
     100% { transform: scale(1.0) translateX(0);}
   }
   .card.disabled {
@@ -227,40 +259,42 @@
   }
   #message {
     margin-top: 1.2rem;
-    font-size: 1.25rem;
-    color: #ffff00;
-    text-shadow: 0 0 12px #ffff00, 0 0 24px #23224d;
+    font-size: 1.28rem;
+    color: #2266cc;
+    text-shadow: 0 0 12px #bbd7fa, 0 0 24px #d7eaff;
     font-weight: 600;
     min-height: 2.2em;
   }
   #reset {
     margin-top: 2rem;
-    background: linear-gradient(90deg,#00ffff,#ff00cc,#00ffff);
-    color: #23224d;
+    background: linear-gradient(90deg,#2266cc,#66aaff 90%,#2266cc);
+    color: #fff;
     padding: 0.7rem 2rem;
     border: none;
-    border-radius: 14px;
+    border-radius: 15px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.13rem;
-    box-shadow: 0 0 15px #00ffff66;
+    font-size: 1.15rem;
+    box-shadow: 0 0 16px #bbd7fa;
     letter-spacing: 1px;
     transition: transform 0.23s, background 0.23s, box-shadow 0.23s;
     display: inline-block;
   }
   #reset:hover {
-    transform: scale(1.09);
-    background: linear-gradient(90deg,#ff00cc,#00ffff,#ff00cc);
+    transform: scale(1.11);
+    background: linear-gradient(90deg,#66aaff 10%,#2266cc 90%);
     color: #fff;
-    box-shadow: 0 0 26px #ff00cc88;
+    box-shadow: 0 0 29px #2266cc44;
   }
   @media (max-width: 700px) {
     #info { padding: 0.5rem; }
-    .fact-item { padding: 0.5rem; font-size: 0.95rem;}
-    #game { gap: 0.6rem;}
+    .fact-item { padding: 0.5rem; font-size: 0.945rem; }
+    #game { gap: 0.7rem; }
     .card { width: 120px; height: 80px; font-size: 0.85rem; padding: 0.4rem;}
-    #progress-bar { width: 95%; max-width: 95vw;}
+    #progress-bar { width: 97%; max-width: 98vw;}
     #backHome { margin-top: 0.8rem; padding: 0.5rem 1rem; font-size: 1rem;}
+    .fact-svg { width: 30px; height: 30px;}
+    .card > .fact-svg { width: 23px; height: 23px; }
   }
 </style>
 </head>
@@ -278,6 +312,15 @@
   <div id="message" class="hide"></div>
   <button id="reset" class="hide" onclick="startGame()">🔄 Play Again</button>
 <script>
+// SVG illustrations: blue theme, no magenta/neon.
+const stageSvgs = [
+  `<svg class="fact-svg" viewBox="0 0 50 50"><rect x="6" y="10" width="38" height="28" rx="7" fill="#e0f2ff" stroke="#2266cc" stroke-width="2"/><rect x="13" y="16" width="24" height="15" rx="2" fill="#f4faff" stroke="#66aaff" stroke-width="0.7"/><circle cx="16" cy="33" r="2.6" fill="#2266cc"/><rect x="31" y="31.5" width="7" height="4" rx="2" fill="#66aaff"/></svg>`,
+  `<svg class="fact-svg" viewBox="0 0 50 50"><rect x="12" y="14" width="26" height="20" rx="3" fill="#e0f2ff" stroke="#2266cc" stroke-width="2"/><rect x="18" y="19" width="14" height="5" rx="1" fill="#66aaff"/><rect x="18" y="26" width="7" height="4" rx="1" fill="#a4b8cf"/><rect x="25" y="26" width="7" height="4" rx="1" fill="#cce4ff"/></svg>`,
+  `<svg class="fact-svg" viewBox="0 0 50 50"><rect x="7" y="12" width="36" height="26" rx="6" fill="#eaf6ff" stroke="#2266cc" stroke-width="2"/><rect x="13" y="19" width="24" height="4" rx="1.5" fill="#66aaff"/><rect x="13" y="25" width="24" height="4" rx="1.5" fill="#a4b8cf"/><rect x="13" y="31" width="24" height="4" rx="1.5" fill="#2266cc"/></svg>`,
+  `<svg class="fact-svg" viewBox="0 0 50 50"><rect x="12" y="15" width="26" height="20" rx="4" fill="#e0f2ff" stroke="#a4b8cf" stroke-width="2"/><line x1="17" y1="20" x2="33" y2="30" stroke="#66aaff" stroke-width="2"/><line x1="33" y1="20" x2="17" y2="30" stroke="#cce4ff" stroke-width="2"/><circle cx="25" cy="34" r="2.2" fill="#2266cc"/></svg>`,
+  `<svg class="fact-svg" viewBox="0 0 50 50"><rect x="10" y="16" width="30" height="20" rx="6" fill="#eaf6ff" stroke="#66aaff" stroke-width="2"/><rect x="17" y="22" width="16" height="5" rx="2.1" fill="#66aaff"/><circle cx="25" cy="31" r="3.2" fill="#2365c8"/><rect x="23" y="34.8" width="4" height="2.2" fill="#2266cc"/></svg>`,
+];
+
 const stages = [
   { name: "Early Computers (1940s–1950s)", info: "Room-sized machines using punched cards." },
   { name: "Job Processing", info: "Batch jobs run by operators, not users." },
@@ -299,10 +342,13 @@ function showInfo() {
   document.getElementById("backHome").classList.add("hide");
 
   const factList = document.getElementById("factList");
-  factList.innerHTML = stages.map(s => `
+  factList.innerHTML = stages.map((s, i) => `
     <li class="fact-item">
-      <strong>${s.name}</strong><br>
-      ${s.info}
+      ${stageSvgs[i]}
+      <div>
+        <strong>${s.name}</strong>
+        ${s.info}
+      </div>
     </li>
   `).join('');
 }
@@ -324,7 +370,7 @@ function startGame() {
   const progress = document.getElementById("progress");
   container.innerHTML = "";
   msg.textContent = "";
-  order = [...stages].sort(() => Math.random() - 0.5);
+  order = [...stages].map((s, i) => ({...s, svg: stageSvgs[i]})).sort(() => Math.random() - 0.5);
   current = 0;
   locked = false;
   progress.style.width = "0%";
@@ -332,7 +378,7 @@ function startGame() {
   order.forEach((stage, index) => {
     const div = document.createElement("div");
     div.classList.add("card");
-    div.innerHTML = `<strong>${stage.name}</strong><br><small>${stage.info}</small>`;
+    div.innerHTML = `${stage.svg}<div class="card-text"><strong>${stage.name}</strong><br><small>${stage.info}</small></div>`;
     div.onclick = () => handleClick(index, div);
     container.appendChild(div);
   });
@@ -349,7 +395,7 @@ function handleClick(index, div) {
     document.getElementById("progress").style.width = ((current+1)/stages.length*100) + "%";
     locked = true;
     setTimeout(() => {
-      div.style.opacity = "0.5";
+      div.style.opacity = "0.48";
       div.style.pointerEvents = "none";
       div.classList.remove("correct");
       locked = false;
@@ -376,6 +422,7 @@ function backToHome() {
 }
 
 showInfo();
+
 </script>
 </body>
 </html>
